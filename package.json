@@ -2,11 +2,15 @@
   "name": "perf-monitor",
   "version": "1.0.0",
   "description": "Performance Monitor SDK",
-  "main": "dist/index.js",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.umd.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist/"
   ],
   "scripts": {
+    "dev": "rollup -c -w",
+    "build": "tsc && rollup -c",
     "prepare": "husky install",
     "lint": "eslint --ext .ts,.js ./src --fix",
     "lint-staged": "lint-staged",
@@ -27,8 +31,13 @@
   },
   "homepage": "https://github.com/Jacky-Summer/perf-monitor#readme",
   "devDependencies": {
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "@babel/preset-typescript": "^7.16.7",
     "@commitlint/cli": "^16.2.4",
     "@commitlint/config-conventional": "^16.2.4",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-node-resolve": "^13.3.0",
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",
     "eslint": "^8.15.0",
@@ -36,6 +45,7 @@
     "lint-staged": "^12.4.1",
     "prettier": "^2.6.2",
     "rollup": "^2.72.1",
+    "rollup-plugin-typescript2": "^0.31.2",
     "typescript": "^4.6.4"
   },
   "lint-staged": {
