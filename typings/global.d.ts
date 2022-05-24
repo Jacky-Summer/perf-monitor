@@ -11,3 +11,23 @@ interface NetworkInformation extends EventTarget {
   readonly type: ConnectionType
   onChange: (event: Event) => void
 }
+
+interface LargestContentfulPaint extends PerformanceEntry {
+  renderTime: numbers
+  loadTime: number
+  size: number
+  id: number
+  url: string
+  element: Element
+}
+
+type IEntryType =
+  | 'first-input'
+  | 'measure'
+  | 'element'
+  | 'navigation'
+  | 'paint'
+  | 'largest-contentful-paint'
+  | 'layout-shift'
+  | 'resource'
+  | 'longtask'

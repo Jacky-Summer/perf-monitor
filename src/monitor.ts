@@ -1,5 +1,5 @@
 import { isSupportPerformance } from './utils'
-import { getNavigationTime, getNetworkInfo } from './lib'
+import { getNavigationTime, getNetworkInfo, getPaintTime, getLCP } from './lib'
 
 class PerfMonitor {
   constructor() {
@@ -10,6 +10,8 @@ class PerfMonitor {
 
     getNavigationTime()
     getNetworkInfo()
+    getPaintTime()
+    getLCP()
   }
 }
 

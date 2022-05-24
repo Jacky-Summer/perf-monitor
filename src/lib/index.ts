@@ -1,6 +1,7 @@
 /**
  * 获取性能指标
  */
+import { hiddenTime, getObserver } from '../utils'
 
 export const getNavigationTime = () => {
   const navigation = window.performance.getEntriesByType('navigation')
@@ -62,4 +63,31 @@ export const getNetworkInfo = () => {
   }
 
   return {}
+}
+
+export const getPaintTime = () => {
+  getObserver('paint', (entries) => {
+    console.log('entries', entries)
+    for (const entry of entries) {
+      const time = entry.startTime
+      const name = entry.name
+      if (name === 'first-contentful-paint') {
+        console.log('FCP', time)
+      } else {
+        // first-paint
+        console.log('FP', time)
+      }
+    }
+    console.log('entries', entries)
+  })
+}
+
+export const getLCP = () => {
+  getObserver('largest-contentful-paint', (entries) => {
+    for (const entry of entries) {
+      if (entry.startTime < hiddenTime) {
+        console.log('entry', entry)
+      }
+    }
+  })
 }

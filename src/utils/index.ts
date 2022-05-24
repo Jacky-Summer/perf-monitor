@@ -7,3 +7,15 @@ export const isSupportPerformance = () => {
     !!performance.mark
   )
 }
+
+export const getObserver = (
+  type: IEntryType,
+  callback: (entries: PerformanceEntryList | LargestContentfulPaint[]) => void,
+) => {
+  const perfObserver = new PerformanceObserver((list) => {
+    callback(list.getEntries())
+  })
+  perfObserver.observe({ type, buffered: true })
+}
+
+export const hiddenTime = document.visibilityState === 'hidden' ? 0 : Infinity
