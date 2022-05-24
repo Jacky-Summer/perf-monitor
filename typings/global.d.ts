@@ -31,3 +31,8 @@ type IEntryType =
   | 'layout-shift'
   | 'resource'
   | 'longtask'
+
+// https://wicg.github.io/event-timing/#sec-performance-event-timing
+interface IPerformanceEventTiming extends PerformanceEntry {
+  processingStart: DOMHighResTimeStamp
+}

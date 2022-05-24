@@ -17,5 +17,3 @@ export const getObserver = (
   })
   perfObserver.observe({ type, buffered: true })
 }
-
-export const hiddenTime = document.visibilityState === 'hidden' ? 0 : Infinity
